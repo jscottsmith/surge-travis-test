@@ -8,13 +8,12 @@ script: yarn test
 branches:
   only:
     - "/.*/"
-deploy:
-  provider: script
-  script: bash ./deploy.sh
-  skip_cleanup: true
-  on:
-    all_branches: true
-# after_success:
-#   - yarn build
-#   - chmod ugo+x ./deploy.sh
-#   - ./deploy.sh
+# deploy:
+#   provider: script
+#   script: bash ./deploy.sh
+#   skip_cleanup: true
+#   on:
+#     all_branches: true
+after_success:
+  - chmod ugo+x ./deploy.sh
+  - ./deploy.sh

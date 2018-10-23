@@ -8,5 +8,7 @@ script: yarn test
 branches:
   only:
     - "/.*/"
-
-before_deploy: yarn buildstorybook
+before_deploy: yarn build
+after_success:
+  - chmod ugo+x ./deploy.py
+  - ./deploy.py

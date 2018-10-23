@@ -41,8 +41,17 @@ do
   # The length is limited to 253 characters
   # https://en.wikipedia.org/wiki/Domain_Name_System#Domain_name_syntax
   DEPLOY_SUBDOMAIN=`echo "$DEPLOY_SUBDOMAIN_UNFORMATTED" | sed -r 's/[\/|\.]+/\-/g'`
+
+  # deploy to master domain
+  if [ "$TRAVIS_BRANCH" == 'master']
+  then
+  DEPLOY_DOMAIN=gumdrops.surge.sh
+  # deploy to custom domain
+  else
   DEPLOY_DOMAIN=https://${DEPLOY_SUBDOMAIN}-${REPO_NAME}-${REPO_OWNER}.surge.sh
+  
   surge --project ${DEPLOY_PATH} --domain $DEPLOY_DOMAIN;
+
   if [ "$TRAVIS_PULL_REQUEST" != "false" ]
   then
     # Using the Issues api instead of the PR api

@@ -8,7 +8,13 @@ script: yarn test
 branches:
   only:
     - "/.*/"
-after_success:
-  - yarn build
-  - chmod ugo+x ./deploy.sh
-  - ./deploy.sh
+deploy:
+  provider: script
+  script: bash ./deploy.sh
+  on:
+    tags: true
+    all_branches: true
+# after_success:
+#   - yarn build
+#   - chmod ugo+x ./deploy.sh
+#   - ./deploy.sh

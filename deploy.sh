@@ -5,11 +5,8 @@ REPO_OWNER=${REPO_SLUG_ARRAY[0]}
 REPO_NAME=${REPO_SLUG_ARRAY[1]}
 DEPLOY_PATH=./build
 
-echo $REPO_SLUG_ARRAY
-echo $REPO_OWNER
-echo $REPO_NAME
-echo $DEPLOY_PATH
-
+DEPLOYMENT_BEGIN="== Running deploy script for $REPO_NAME by ${REPO_OWNER} =="
+echo $DEPLOYMENT_BEGIN
 
 DEPLOY_SUBDOMAIN_UNFORMATTED_LIST=()
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]
@@ -31,7 +28,7 @@ then
   fi
   DEPLOY_SUBDOMAIN_UNFORMATTED_LIST+=(${TRAVIS_TAG}-tag)
 else
-  DEPLOY_SUBDOMAIN_UNFORMATTED_LIST+=(${TRAVIS_BRANCH}-branch)
+  DEPLOY_SUBDOMAIN_UNFORMATTED_LIST+=(${TRAVIS_BRANCH})
 fi
 
 
@@ -55,3 +52,5 @@ do
     curl -H "Authorization: token ${GITHUB_API_TOKEN}" --request POST ${GITHUB_PR_COMMENTS} --data '{"body":"Travis automatic deployment: '${DEPLOY_DOMAIN}'"}'
   fi
 done
+
+exit 0

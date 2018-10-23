@@ -10,5 +10,5 @@ branches:
     - "/.*/"
 before_deploy: yarn build
 after_success:
-  - chmod ugo+x ./deploy.py
-  - ./deploy.py
+  - chmod ugo+x ./deploy.sh
+  - ./deploy.sh

@@ -12,7 +12,6 @@ deploy:
   provider: script
   script: bash ./deploy.sh
   on:
-    tags: true
     all_branches: true
 # after_success:
 #   - yarn build

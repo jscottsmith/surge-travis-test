@@ -32,7 +32,7 @@ do
   if [ "$TRAVIS_BRANCH" == "master" ]
   then
     DEPLOY_DOMAIN=PROD_SURGE_DOMAIN
-  if [ "$TRAVIS_BRANCH" == "develop" ]
+  elif [ "$TRAVIS_BRANCH" == "develop" ]
   then
     DEPLOY_DOMAIN=DEV_SURGE_DOMAIN
   else

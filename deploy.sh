@@ -43,7 +43,7 @@ do
   DEPLOY_SUBDOMAIN=`echo "$DEPLOY_SUBDOMAIN_UNFORMATTED" | sed -r 's/[\/|\.]+/\-/g'`
 
   # deploy to master domain
-  if [ "$TRAVIS_BRANCH" == 'master']
+  if [ "$TRAVIS_BRANCH" == "master" ]
   then
   DEPLOY_DOMAIN=gumdrops.surge.sh
   # deploy to custom domain

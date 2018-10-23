@@ -49,6 +49,7 @@ do
   # deploy to custom domain
   else
   DEPLOY_DOMAIN=https://${DEPLOY_SUBDOMAIN}-${REPO_NAME}-${REPO_OWNER}.surge.sh
+  fi
   
   surge --project ${DEPLOY_PATH} --domain $DEPLOY_DOMAIN;
 

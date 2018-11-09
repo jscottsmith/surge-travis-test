@@ -40,7 +40,7 @@ do
   fi
 
   # send to surge
-  surge --project ${DEPLOY_PATH} --domain $DEPLOY_DOMAIN;
+  surge --project ${DEPLOY_PATH} --domain ${DEPLOY_DOMAIN};
 
   # Enable for PR comments, requires token to be set.
 

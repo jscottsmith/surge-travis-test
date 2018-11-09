@@ -15,7 +15,7 @@ deploy:
   on:
     all_branches: true
 
-# This is a workaround to make PR deploy
+# This is a workaround to make PRs deploy
 # after_success:
 #   - chmod ugo+x ./deploy.sh
 #   - ./deploy.sh

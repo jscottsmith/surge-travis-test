@@ -31,16 +31,16 @@ do
   # set master/develop domain else custom domain
   if [ "$TRAVIS_BRANCH" == "master" ]
   then
-    DEPLOY_DOMAIN=PROD_SURGE_DOMAIN
-  if [ "$TRAVIS_BRANCH" == "develop" ]
+    DEPLOY_DOMAIN=${PROD_SURGE_DOMAIN}
+  elif [ "$TRAVIS_BRANCH" == "develop" ]
   then
-    DEPLOY_DOMAIN=DEV_SURGE_DOMAIN
+    DEPLOY_DOMAIN=${DEV_SURGE_DOMAIN}
   else
     DEPLOY_DOMAIN=https://${DEPLOY_SUBDOMAIN}-${REPO_NAME}-${REPO_OWNER}.surge.sh
   fi
 
   # send to surge
-  surge --project ${DEPLOY_PATH} --domain $DEPLOY_DOMAIN;
+  surge --project ${DEPLOY_PATH} --domain ${DEPLOY_DOMAIN};
 
   # Enable for PR comments, requires token to be set.
 
